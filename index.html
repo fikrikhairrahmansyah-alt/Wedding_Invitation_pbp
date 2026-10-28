@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Woody &amp; Bo Peep - Undangan Pernikahan</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="locked">
+
+  <!-- Ornamen bunga (dipakai ulang lewat <use>) -->
+  <svg width="0" height="0" class="position-absolute" aria-hidden="true">
+    <symbol id="flower" viewBox="0 0 64 64" fill="none" stroke="#D8C39A" stroke-width="1.2">
+      <g transform="translate(32 32)">
+        <ellipse rx="5" ry="14" cy="-14"/>
+        <ellipse rx="5" ry="14" cy="-14" transform="rotate(72)"/>
+        <ellipse rx="5" ry="14" cy="-14" transform="rotate(144)"/>
+        <ellipse rx="5" ry="14" cy="-14" transform="rotate(216)"/>
+        <ellipse rx="5" ry="14" cy="-14" transform="rotate(288)"/>
+        <circle r="3" fill="#F7F2E9" stroke="none"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- A. Opening invitation -->
+  <div id="cover">
+    <img class="corner c-tl" src="assets/images/corner.png" alt="" aria-hidden="true">
+    <img class="corner c-tr" src="assets/images/corner.png" alt="" aria-hidden="true">
+    <img class="corner c-bl" src="assets/images/corner.png" alt="" aria-hidden="true">
+    <img class="corner c-br" src="assets/images/corner.png" alt="" aria-hidden="true">
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="stars" id="stars" aria-hidden="true"></div>
+    <div class="cover-in">
+      <svg class="orn mb-3" aria-hidden="true"><use href="#flower"/></svg>
+      <div class="text-muted2 small tracking">THE WEDDING OF</div>
+      <h1 data-c="coupleShort"></h1>
+      <p class="mb-1" data-c="dateText"></p>
+      <p class="text-muted2 small mb-4" id="guest"></p>
+      <button class="btn btn-gold" id="openBtn">Buka Undangan</button>
+    </div>
+  </div>
+
+  <!-- C. Navbar -->
+  <nav class="navbar navbar-expand-md fixed-top" aria-label="Navigasi utama">
+    <div class="container">
+      <a class="navbar-brand" href="#home" data-c="initials"></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nv" aria-controls="nv" aria-expanded="false" aria-label="Buka menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nv">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#couple">Couple</a></li>
+          <li class="nav-item"><a class="nav-link" href="#story">Love Story</a></li>
+          <li class="nav-item"><a class="nav-link" href="#event">Event</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rsvp">RSVP</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <button id="music" class="btn btn-outline-gold p-0" aria-label="Putar atau jeda musik">♪</button>
+  
+  <main>
+    <!-- B. Hero -->
+    <header id="home">
+      <div class="container">
+        <div class="text-muted2 small tracking">KAMI MENIKAH</div>
+        <h1 class="mt-2" data-c="coupleShort"></h1>
+        <div class="frame">
+          <img id="heroImg" alt="Foto Woody dan Bo Peep">
+        </div>
+        <p class="quote mx-auto">“Di bawah langit malam, dua hati menemukan rumahnya.”</p>
+        <p class="text-muted2" data-c="dateText"></p>
+        <div class="cd d-flex justify-content-center gap-2 gap-md-4 my-4" data-countdown></div>
+        <a class="btn btn-gold" href="#event">Lihat Detail Acara</a>
+      </div>
+    </header>
+
+    <!-- D. Couple -->
+    <section id="couple">
+      <div class="container">
+        <h2 class="text-center reveal">Mempelai</h2>
+        <p class="text-center text-muted2 mx-auto mb-5 reveal lead-narrow">Dengan memohon rahmat Tuhan Yang Maha Esa, kami mengundang Anda untuk menyaksikan hari bahagia kami.</p>
+        <div class="row g-5 align-items-center text-center" id="coupleRow"></div>
+      </div>
+    </section>
+
+    <!-- E. Love story -->
+    <section id="story">
+      <div class="container container-narrow">
+        <h2 class="text-center reveal">Love Story</h2>
+        <p class="text-center mb-5 reveal">Perjalanan kecil yang membawa kami ke hari ini.</p>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- F + G. Event & countdown -->
+    <section id="event">
+      <div class="container">
+        <h2 class="text-center reveal">Waktu &amp; Tempat</h2>
+        <p class="text-center text-muted2 mb-5 reveal">Kehadiran dan doa restu Anda adalah hadiah terindah bagi kami.</p>
+        <div class="row g-4 justify-content-center" id="events"></div>
+        <div class="text-center mt-5 reveal">
+          <h3 class="fs-2 mb-3">Menuju Hari Bahagia</h3>
+          <div class="cd d-flex justify-content-center gap-2 gap-md-4" data-countdown></div>
+          <p class="mt-3 text-muted2" id="cdDone" hidden>Hari bahagia telah tiba. Terima kasih atas doa Anda.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- H. Gallery -->
+    <div class="divider reveal" aria-hidden="true">
+      <img src="assets/images/divider.webp" alt="">
+    </div>
+    <section id="gallery">
+      <div class="container">
+        <h2 class="text-center reveal">Gallery</h2>
+        <p class="text-center text-muted2 mb-5 reveal">Potret kenangan kami.</p>
+        <div class="row g-2 g-md-3 reveal" id="grid"></div>
+      </div>
+    </section>
+
+    <!-- I. RSVP -->
+    <section id="rsvp">
+      <div class="container container-form">
+        <h2 class="text-center reveal">Konfirmasi Kehadiran</h2>
+        <p class="text-center text-muted2 mb-4 reveal">Mohon konfirmasi kehadiran Anda.</p>
+        <form id="rsvpForm" class="reveal" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="rsvpName">Nama tamu</label>
+            <input class="form-control" id="rsvpName" autocomplete="name">
+            <div class="invalid-feedback">Nama wajib diisi (minimal 3 huruf).</div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-5">
+              <label class="form-label" for="rsvpGuests">Jumlah tamu</label>
+              <select class="form-select" id="rsvpGuests">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+            <div class="col-7">
+              <label class="form-label" for="rsvpStatus">Kehadiran</label>
+              <select class="form-select" id="rsvpStatus">
+                <option value="">Pilih…</option>
+                <option>Hadir</option>
+                <option>Tidak hadir</option>
+              </select>
+              <div class="invalid-feedback">Pilih hadir atau tidak hadir.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="rsvpMsg">Pesan tambahan (opsional)</label>
+            <textarea class="form-control" id="rsvpMsg" rows="3" maxlength="300"></textarea>
+          </div>
+          <button class="btn btn-gold w-100" type="submit">Kirim Konfirmasi</button>
+        </form>
+      </div>
+    </section>
+    <div class="divider divider-lotus reveal" aria-hidden="true">
+      <img src="assets/images/divider-lotus.webp" alt="">
+    </div>
+  </main>
+
+  <!-- K. Closing -->
+  <footer id="closing">
+    <div class="container reveal">
+      <svg class="orn mb-3" aria-hidden="true"><use href="#flower"/></svg>
+      <p class="mx-auto mb-4 lead-narrow">Terima kasih atas doa dan kehadiran Anda. Semoga kebahagiaan ini juga menyertai Anda.</p>
+      <h2 data-c="coupleShort"></h2>
+      <p class="rose" data-c="dateText"></p>
+    </div>
+  </footer>
+
+  <!-- Modal lightbox -->
+  <div class="modal fade" id="lightbox" tabindex="-1" aria-label="Foto galeri" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content p-2 text-center">
+        <img class="img-fluid rounded" alt="">
+        <div class="d-flex justify-content-between p-2">
+          <button class="btn btn-outline-gold btn-sm" id="prevPhoto">‹ Sebelumnya</button>
+          <button class="btn btn-outline-gold btn-sm" data-bs-dismiss="modal">Tutup</button>
+          <button class="btn btn-outline-gold btn-sm" id="nextPhoto">Berikutnya ›</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notifikasi -->
+  <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="toast-body" id="toastBody"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ornaments.js"></script>
+  <script src="js/side-ornaments.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
